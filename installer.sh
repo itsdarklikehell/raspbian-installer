@@ -9,8 +9,11 @@ echo "Running simple installer."
 
 extract(){
 echo "Extracting $dest.img from $dest.zip to folder $dest"
-unzip -j $dest.zip $file -d $dest/$dest.img
 cd $dest
+unzip -j $dest.zip
+#-d $dest.img
+#unzip -j $dest.zip $file -d $dest.img
+
 }
 
 burn(){
