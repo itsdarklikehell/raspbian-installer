@@ -52,7 +52,6 @@ mkdir -p Backups
 dest="Backups/Backup.img"
 sudo dd if=/dev/$inputfile of=$dest
 #sudo dd if=$dest/$dest.img of=$device bs=1m && sync
-
 }
 
 restore(){
@@ -65,6 +64,38 @@ sudo dd if=$inputfile of=/dev/$dest
 #sudo dd if=$dest/$dest.img of=$device bs=1m && sync
 }
 
+modify(){
+echo "Modidfy the currently running raspbian os."
+sudo apt-get update && sudo apt-get upgrade -y
+
+aptget(){
+sudo apt-get install -y byobu
+sudo apt-get install -y npm
+sudo apt-get install -y wget
+sudo apt-get install -y curl
+sudo apt-get install -y modipy
+sudo apt-get install -y lsb-release
+sudo apt-get install -y git
+sudo apt-get install -y python-pip
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
+}
+
+retropie(){
+echo "Cloning RetroPie-Setup git."
+cd
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
+cd RetroPie-Setup
+chmod +x retropie_setup.sh
+#sudo ./retropie_setup.sh
+cd
+}
+
+aptget
+retropie
+}
+
+
 menudriven(){
 echo "installer.sh menu"
 echo "STIL W.I.P."
@@ -75,5 +106,8 @@ echo "STIL W.I.P."
 simple
 #backup
 #restore
+modify
+
 #menudriven
+
 ### This is where the functions stop getting executed: ###
