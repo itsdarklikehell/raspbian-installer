@@ -11,7 +11,7 @@ burn(){
 device=0
 #clear
 df
-echo "please define the destination device or partition to burn to e.g. /dev/sdXY"
+echo "please define the destination device or partition to burn $dest.img from $dest/$dest.zip to e.g. /dev/sdXY"
 read device
 echo "Burning $dest/$dest.img to $device."
 (unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M status=progress) 2>&1 | whiptail --gauge && sync #new way of showing status
