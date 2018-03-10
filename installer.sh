@@ -11,6 +11,7 @@ extract(){
 echo "Extracting $dest.img from $dest.zip to folder $dest"
 cd $dest
 unzip -j $dest.zip $file -d $dest.img
+rm $dest.zip
 }
 
 burn(){
@@ -18,11 +19,9 @@ burn(){
 df
 echo "please define the destination to burn to e.g. /dev/sdX"
 read device
-echo "Burning $dest/$dest.img to $device."
-
-#sudo dd if=$dest/$dest.img of=$device
-#sudo dd if=$dest/$dest.img of=$device bs=1m && sync
-
+echo "Burning $dest.img to $device."
+#sudo dd if=$dest.img of=$device
+#sudo dd if=$dest.img of=$device bs=1m && sync
 }
 
 dljessie(){
