@@ -10,10 +10,7 @@ echo "Running simple installer."
 extract(){
 echo "Extracting $dest.img from $dest.zip to folder $dest"
 cd $dest
-unzip -j $dest.zip
-#-d $dest.img
-#unzip -j $dest.zip $file -d $dest.img
-
+unzip -j $dest.zip $file -d $dest.img
 }
 
 burn(){
@@ -30,7 +27,7 @@ echo "Burning $dest/$dest.img to $device."
 
 dljessie(){
 dest="Jessie"
-file="Jessie.img"
+file="2017-07-05-raspbian-jessie.img"
 echo "Downloading Raspbian $dest from $jessieurl"
 mkdir -P $dest
 wget -c $jessieurl -O $dest/$dest.zip
