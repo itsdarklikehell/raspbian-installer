@@ -32,7 +32,7 @@ dest="Jessie"
 file="Jessie.img"
 echo "Downloading Raspbian $dest from $jessieurl"
 mkdir $dest
-wget -C $jessieurl -O $dest/$dest.zip
+wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
 extract
 burn
@@ -43,7 +43,7 @@ dest="Stretch"
 file="Stretch.img"
 echo "Downloading Raspbian $dest from $jessieurl"
 mkdir $dest
-wget -C $jessieurl -O $dest/$dest.zip
+wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
 extract
 burn
