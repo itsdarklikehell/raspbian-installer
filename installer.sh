@@ -23,7 +23,7 @@ dljessie(){
 dest="Jessie"
 file="2017-07-05-raspbian-jessie.img"
 echo "Downloading Raspbian $dest from $jessieurl"
-mkdir -P $dest
+mkdir $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
 burn
@@ -33,7 +33,7 @@ dlstretch(){
 dest="Stretch"
 file="Stretch.img"
 echo "Downloading Raspbian $dest from $jessieurl"
-mkdir -P $dest
+mkdir $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
 burn
@@ -48,7 +48,7 @@ echo "Create a backup image"
 df
 echo "Please specify the drive or partition to back up without `/dev/` e.g. like: sdXY"
 read inputfile
-mkdir -p Backups
+mkdir Backups
 dest="Backups/Backup.img"
 sudo dd if=/dev/$inputfile of=$dest
 }
@@ -89,7 +89,7 @@ cd
 git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
 cd RetroPie-Setup
 chmod +x retropie_setup.sh
-sudo ./retropie_setup.sh
+#sudo ./retropie_setup.sh
 cd
 }
 
