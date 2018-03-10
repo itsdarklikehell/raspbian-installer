@@ -51,7 +51,6 @@ read inputfile
 mkdir -p Backups
 dest="Backups/Backup.img"
 sudo dd if=/dev/$inputfile of=$dest
-#sudo dd if=$dest/$dest.img of=$device bs=1m && sync
 }
 
 restore(){
@@ -79,6 +78,9 @@ sudo apt-get install -y git
 sudo apt-get install -y python-pip
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
+sudo apt-get install -y xrdp
+sudo apt-get install -y quassel-core
+sudo apt-get install -y quassel-client
 }
 
 retropie(){
@@ -87,12 +89,12 @@ cd
 git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
 cd RetroPie-Setup
 chmod +x retropie_setup.sh
-#sudo ./retropie_setup.sh
+sudo ./retropie_setup.sh
 cd
 }
 
 aptget
-retropie
+#retropie
 }
 
 
@@ -103,7 +105,7 @@ echo "STIL W.I.P."
 
 
 ### This is where the functions get executed: ###
-#simple
+simple
 #backup
 #restore
 modify
