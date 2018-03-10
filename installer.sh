@@ -7,24 +7,16 @@ simple(){
 echo "Running simple installer."
 
 
-extract(){
-echo "Extracting $dest.img from $dest.zip to folder $dest"
-cd $dest
-unzip -j $dest.zip $file -d $dest.img
-rm $dest.zip
-}
-
 burn(){
 device=0
 #clear
 df
-echo "please define the destination to burn to e.g. /dev/sdX"
+echo "please define the destination device or partition to burn to e.g. /dev/sdXY"
 read device
-echo "Burning $dest.img to $device."
-#sudo dd if=$dest.img of=$device
-#sudo dd if=$dest.img of=$device bs=1m && sync
-unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M && sync
-
+echo "Burning $dest/$dest.img to $device."
+(unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M status=progress) 2>&1 | whiptail --gauge && sync #new way of showing status
+#(unzip -p $dest/$dest.zip $file | pv | sudo dd of=$device bs=1M) 2>&1 | whiptail --gauge && sync #old way of showing status
+echo "Done burning $dest/$dest.img to $device..."
 }
 
 dljessie(){
@@ -34,7 +26,6 @@ echo "Downloading Raspbian $dest from $jessieurl"
 mkdir -P $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
-#extract
 burn
 }
 
@@ -45,7 +36,6 @@ echo "Downloading Raspbian $dest from $jessieurl"
 mkdir -P $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
-#extract
 burn
 }
 
