@@ -23,7 +23,7 @@ read device
 echo "Burning $dest.img to $device."
 #sudo dd if=$dest.img of=$device
 #sudo dd if=$dest.img of=$device bs=1m && sync
-unzip -p $dest.zip $file | sudo dd of=$device bs=1M && sync
+unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M && sync
 
 }
 
