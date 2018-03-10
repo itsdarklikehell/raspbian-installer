@@ -14,7 +14,7 @@ cd $dest
 }
 
 burn(){
-clear
+#clear
 df
 echo "please define the destination to burn to e.g. /dev/sdX"
 read device
