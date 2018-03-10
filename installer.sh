@@ -15,6 +15,7 @@ rm $dest.zip
 }
 
 burn(){
+device=0
 #clear
 df
 echo "please define the destination to burn to e.g. /dev/sdX"
@@ -22,6 +23,8 @@ read device
 echo "Burning $dest.img to $device."
 #sudo dd if=$dest.img of=$device
 #sudo dd if=$dest.img of=$device bs=1m && sync
+unzip -p $dest.zip $file | sudo dd of=$device bs=1M && sync
+
 }
 
 dljessie(){
@@ -31,7 +34,7 @@ echo "Downloading Raspbian $dest from $jessieurl"
 mkdir -P $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
-extract
+#extract
 burn
 }
 
@@ -42,7 +45,7 @@ echo "Downloading Raspbian $dest from $jessieurl"
 mkdir -P $dest
 wget -c $jessieurl -O $dest/$dest.zip
 echo "Done downloading Raspbian $dest..."
-extract
+#extract
 burn
 }
 
