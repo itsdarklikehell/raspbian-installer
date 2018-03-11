@@ -115,7 +115,7 @@ WEATHER-CLI(){
 
 ponysay(){
 	cd
-	https://github.com/erkin/ponysay
+	git clone https://github.com/erkin/ponysay
 	cd ponysay
 	sudo ./setup.py --freedom=partial install
 	ponysay "done"
