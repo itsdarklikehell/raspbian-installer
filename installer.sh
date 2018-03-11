@@ -105,7 +105,7 @@ cd
 git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git
 cd RetroPie-Setup
 chmod +x retropie_setup.sh
-#sudo ./retropie_setup.sh
+sudo ./retropie_setup.sh
 cd
 }
 
@@ -118,11 +118,12 @@ menudriven(){
 choice=0
 echo "installer.sh menu"
 echo "STIL W.I.P."
-choice=$(whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
+choice = $(whiptail --title "Menu" --menu "Choose an option" 25 78 16 \
 "BURN" "Download and burn a copy of Raspbian." \
 "BACKUP" "Create a backup of a drive or partition." \
 "RESTORE" "Restore a drive or partition from a backup.img." \
-"MODIFY" "Install tools and modify current running system.")
+"MODIFY" "Install tools and modify current running system." )
+
 if [ $choice = "BURN" ];
 then
 echo "you chose: " $choice
@@ -150,11 +151,11 @@ fi
 
 
 ### This is where the functions get executed: ###
-menudriven
-#simple
+#menudriven
+simple
 #backup
 #restore
-#modify
+modify
 
 #menudriven
 
