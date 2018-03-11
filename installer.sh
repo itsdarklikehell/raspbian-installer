@@ -113,7 +113,7 @@ WEATHER-CLI(){
 	sudo npm install weather-cli
 }
 
-ponysay(){
+PONYSAY(){
 	cd
 	git clone https://github.com/erkin/ponysay
 	cd ponysay
@@ -135,7 +135,7 @@ aptget
 npem
 NOTIFY-CLI
 WEATHER-CLI
-ponysay
+PONYSAY
 #vpnserver
 retropie
 }
