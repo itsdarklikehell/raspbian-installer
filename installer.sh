@@ -1,6 +1,6 @@
 #!/bin/bash
 source installer.config
-sudo apt-get install $depends
+$INSTLL $depends
 whiptail --textbox README.md 12 80
 
 simple(){
@@ -71,21 +71,21 @@ echo "Modidfy the currently running raspbian os."
 sudo apt-get update && sudo apt-get upgrade -y
 
 aptget(){
-sudo apt-get install -y byobu
-sudo apt-get install -y npm
-sudo apt-get install -y wget
-sudo apt-get install -y curl
-sudo apt-get install -y modipy
-sudo apt-get install -y lsb-release
-sudo apt-get install -y git
-sudo apt-get install -y python-pip
-sudo apt-get install -y nodejs
-sudo apt-get install -y npm
-#sudo apt-get install -y xrdp
-sudo apt-get install -y quassel-core
-sudo apt-get install -y quassel-client
-sudo apt-get install -y aria2
-sudo apt-get install -y openssh-sftp-server
+$INSTLL byobu
+$INSTLL npm
+$INSTLL wget
+$INSTLL curl
+$INSTLL modipy
+$INSTLL lsb-release
+$INSTLL git
+#$INSTLL python-pip
+#$INSTLL nodejs
+#$INSTLL npm
+#$INSTLL xrdp
+$INSTLL quassel-core
+$INSTLL quassel-client
+$INSTLL aria2
+$INSTLL openssh-sftp-server
 }
 
 vpnserver(){
@@ -99,6 +99,28 @@ pi-vpn
 #openvpn-install
 }
 
+npem(){
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash
+$INSTLL nodejs
+sudo npm install npm@latest -g
+}
+
+NOTIFY-CLI(){
+sudo npm install notify-cli
+}
+
+WEATHER-CLI(){
+	sudo npm install weather-cli
+}
+
+ponysay(){
+	cd
+	https://github.com/erkin/ponysay
+	cd ponysay
+	sudo ./setup.py --freedom=partial install
+	ponysay "done"
+}
+
 retropie(){
 echo "Cloning RetroPie-Setup git."
 cd
@@ -110,7 +132,12 @@ cd
 }
 
 aptget
-#retropie
+npem
+NOTIFY-CLI
+WEATHER-CLI
+ponysay
+#vpnserver
+retropie
 }
 
 
@@ -149,7 +176,7 @@ fi
 
 ### This is where the functions get executed: ###
 #menudriven
-simple
+#simple
 #backup
 #restore
 modify
