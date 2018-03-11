@@ -81,10 +81,22 @@ sudo apt-get install -y git
 sudo apt-get install -y python-pip
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
-sudo apt-get install -y xrdp
+#sudo apt-get install -y xrdp
 sudo apt-get install -y quassel-core
 sudo apt-get install -y quassel-client
 sudo apt-get install -y aria2
+sudo apt-get install -y openssh-sftp-server
+}
+
+vpnserver(){
+pi-vpn(){
+curl -L http://install.pivpn.io | bash
+}
+openvpn-install(){
+wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+}
+pi-vpn
+#openvpn-install
 }
 
 retropie(){
@@ -103,16 +115,46 @@ aptget
 
 
 menudriven(){
+choice=0
 echo "installer.sh menu"
 echo "STIL W.I.P."
+choice=(whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
+"BURN" "Download and burn a copy of Raspbian." \
+"BACKUP" "Create a backup of a drive or partition." \
+"RESTORE" "Restore a drive or partition from a backup.img." \
+"MODIFY" "Install tools and modify current running system.")
+if [ $choice = "BURN" ];
+then
+echo "you chose: " $choice
+#simple
+fi
+if [ $choice = "BACKUP" ];
+then
+echo "you chose: " $choice
+#backup
+fi
+if [ $choice = "RESTORE" ];
+then
+echo "you chose: " $choice
+#restore
+fi
+if [ $choice = "MODIFY" ];
+then
+echo "you chose: " $choice
+modify
+fi
+
+
+
 }
 
 
 ### This is where the functions get executed: ###
-simple
+menudriven
+#simple
 #backup
 #restore
-modify
+#modify
 
 #menudriven
 
