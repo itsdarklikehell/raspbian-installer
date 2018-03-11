@@ -14,8 +14,10 @@ df
 echo "please define the destination device or partition to burn $dest.img from $dest/$dest.zip to e.g. /dev/sdXY"
 read device
 echo "Burning $dest/$dest.img to $device."
-(unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M status=progress) 2>&1 | whiptail --gauge && sync #new way of showing status
-#(unzip -p $dest/$dest.zip $file | pv | sudo dd of=$device bs=1M) 2>&1 | whiptail --gauge && sync #old way of showing status
+echo "Please note that this shows no status(for now(w.i.p.))"
+echo "just be patient please.."
+unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M && sync
+#(unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M) 2>&1 | whiptail --gauge && sync #old way of showing status
 echo "Done burning $dest/$dest.img to $device..."
 }
 
@@ -81,6 +83,7 @@ sudo apt-get install -y npm
 sudo apt-get install -y xrdp
 sudo apt-get install -y quassel-core
 sudo apt-get install -y quassel-client
+sudo apt-get install -y aria2
 }
 
 retropie(){
