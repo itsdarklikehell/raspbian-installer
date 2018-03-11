@@ -144,9 +144,6 @@ then
 echo "you chose: " $choice
 modify
 fi
-
-
-
 }
 
 
