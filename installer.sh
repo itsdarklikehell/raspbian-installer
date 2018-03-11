@@ -1,7 +1,7 @@
 #!/bin/bash
 source installer.config
 sudo apt-get install $depends
-whiptail --textbox README.MD 12 80
+whiptail --textbox README.md 12 80
 
 simple(){
 echo "Running simple installer."
