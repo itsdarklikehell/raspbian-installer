@@ -13,9 +13,10 @@ device=0
 df
 echo "please define the destination device or partition to burn $dest.img from $dest/$dest.zip to e.g. /dev/sdXY"
 read device
+clear
 echo "Burning $dest/$dest.img to $device."
-echo "Please note that this shows no status(for now(w.i.p.))"
-echo "just be patient please.."
+echo "Please note that this shows no status (for now.. thats still w.i.p.)"
+echo "just be patient and wait until the writing is done please.."
 unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M && sync
 #(unzip -p $dest/$dest.zip $file | sudo dd of=$device bs=1M) 2>&1 | whiptail --gauge && sync #old way of showing status
 echo "Done burning $dest/$dest.img to $device..."
