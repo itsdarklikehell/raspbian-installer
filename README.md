@@ -24,3 +24,11 @@ Thank you for reading, have a nice day.
 
 	bauke molenaar
     mailto:bauke.molenaar@gmail.com
+
+---
+
+## 🎥 Gource Visualization
+
+De ontwikkelhistorie van dit project in een film:
+
+<video src="https://raw.githubusercontent.com/itsdarklikehell/raspbian-installer/master/gource.mp4" controls width="100%"></video>
