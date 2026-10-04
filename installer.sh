@@ -1,4 +1,20 @@
 #!/bin/bash
+
+set -euo pipefail
+
+# Logging
+LOG_FILE="${LOG_FILE:-/tmp/installer.log}"
+log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
+
+# DRY_RUN guard
+DRY_RUN="${DRY_RUN:-}"
+maybe_mutate() {
+  if [ -n "$DRY_RUN" ]; then
+    log "  [DRY-RUN] Would: $*"
+    return 0
+  fi
+  "$@"
+}
 source installer.config
 $INSTLL $depends
 whiptail --textbox README.md 12 80
@@ -90,6 +106,8 @@ $INSTLL openssh-sftp-server
 
 vpnserver(){
 pi-vpn(){
+# shellcheck disable=SC2086
+# Security: PiVPN official installer uses curl|bash pattern
 curl -L http://install.pivpn.io | bash
 }
 openvpn-install(){
@@ -100,6 +118,8 @@ pi-vpn
 }
 
 npem(){
+# shellcheck disable=SC2086
+# Security: NodeSource official installer uses curl|bash pattern
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash
 $INSTLL nodejs
 sudo npm install npm@latest -g
