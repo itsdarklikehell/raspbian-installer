@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 source installer.config
 $INSTLL $depends
 whiptail --textbox README.md 12 80
@@ -90,7 +91,7 @@ $INSTLL openssh-sftp-server
 
 vpnserver(){
 pi-vpn(){
-curl -L http://install.pivpn.io | bash
+curl -L http://install.pivpn.io -o /tmp/pivpn-installer.sh && bash /tmp/pivpn-installer.sh && rm -f /tmp/pivpn-installer.sh
 }
 openvpn-install(){
 wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
@@ -100,7 +101,7 @@ pi-vpn
 }
 
 npem(){
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash
+curl -sL https://deb.nodesource.com/setup_8.x -o /tmp/nodesource-setup.sh && sudo -E bash /tmp/nodesource-setup.sh && rm -f /tmp/nodesource-setup.sh
 $INSTLL nodejs
 sudo npm install npm@latest -g
 }
