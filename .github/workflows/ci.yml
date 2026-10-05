@@ -1,10 +1,18 @@
 name: CI
 on:
   push:
-    branches: ["master","main","master"]
+    branches: ["master", "main"]
   pull_request:
-    branches: ["master","main","master"]
+    branches: ["master", "main"]
   workflow_dispatch:
 jobs:
   ci:
     uses: itsdarklikehell/ci-templates/.github/workflows/ci-generic.yml@v1
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install bats
+        run: sudo apt-get update && sudo apt-get install -y bats
+      - name: Run tests
+        run: bats test/

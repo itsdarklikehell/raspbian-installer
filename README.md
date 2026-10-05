@@ -1,34 +1,70 @@
 # raspbian-installer
-Welcome to raspbian-instaler.
 
-Please use this script with care!
-Use your brain.
+Download, unzip, burn, backup, restore, and modify Raspbian images.
 
-I AM IN NO WAY TO BE HELD RESPONSIBLE FOR ANY DAMAGE OR LOSS OF REVENUE DUE TO IMPROPER READING AND USE OF THIS SCRIPT.
+## Disclaimer
 
-Now with that said, here is the actual readme:
+**Use this script with care!** Read the script before running it on a production system. I am not responsible for any damage or data loss.
 
-Ive made this script for personal use, your system may be diffrent than mine so please use your brain and read the script before blindly running it on a production system.
+## Features
 
-This script can:
+1. **Burn** — Download a Raspbian image and write it to a USB/SD card
+2. **Backup** — Create a backup image of a drive or partition
+3. **Restore** — Restore a drive or partition from a backup image
+4. **Modify** — Install useful tools on a running Raspbian system
 
-1. Download a chosen version of Raspbian.
-   (jessie or stretch)
-2. Write a chosen image to a chosen destination.
-   (usb or sdcard on /dev/sdX)
-3. Modify a currently running Raspbian instalation.
-   (when run on raspbian it can install a list of selected usefull and fun tools like retropie, byobu, git, etc.)
-4. Make a backup image of a usb or sdcard.
+## Usage
 
-Thank you for reading, have a nice day.
+```bash
+# Interactive menu (default)
+./installer.sh
 
-	bauke molenaar
-    mailto:bauke.molenaar@gmail.com
+# Direct commands
+./installer.sh burn      # Download and burn Raspbian Jessie
+./installer.sh backup    # Create a backup image
+./installer.sh restore   # Restore from backup
+./installer.sh modify    # Install tools on current system
+```
+
+## Requirements
+
+- `wget`, `unzip`, `whiptail`, `pv`, `git`, `curl`
+- Root privileges for burn/backup/restore operations
+
+## Configuration
+
+Edit `installer.config` to change:
+- Download URLs for Raspbian images
+- Install command prefix
+- Dependency list
+
+## Development
+
+### Running tests
+
+```bash
+# Install bats if not present
+sudo apt-get install bats
+
+# Run all tests
+bats test/
+```
+
+### Project Structure
+
+```
+.
+├── installer.sh       # Main script
+├── installer.config   # Configuration
+├── test/              # Bats test suite
+│   └── installer.bats
+├── .github/workflows/ # CI configuration
+└── README.md
+```
+
+## License
+
+MIT
 
 ---
-
-## 🎥 Gource Visualization
-
-De ontwikkelhistorie van dit project in een film:
-
-<video src="https://raw.githubusercontent.com/itsdarklikehell/raspbian-installer/master/gource.mp4" controls width="100%"></video>
+*bauke molenaar*

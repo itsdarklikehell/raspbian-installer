@@ -1,10 +1,12 @@
 # Build and Release Folders
 Jessie/
 Stretch/
+Backups/
 
 # Other files and folders
 wget-log
 
-# Executables
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# Test artifacts
+test/tmp/
+wget-log
+gource.mp4
